@@ -40,6 +40,7 @@ namespace MessageMajor
         LevelUp                                = 0x1d,
         GuiQuickbar                            = 0x1e,
         DungeonMaster                          = 0x1f,
+        NPC                                    = 0xc0ffee,
         MapPin                                 = 0x20,
         DebugInfo                              = 0x21,
         SafeProjectile                         = 0x22,
@@ -1181,147 +1182,156 @@ namespace MessageGuiQuickbarMinor
 
 namespace MessageDungeonMasterMinor
 {
-    enum TYPE
-    {
+  enum TYPE
+  {
 
-        RequestObjectList                = 0x01,
-        ObjectList                       = 0x02,
-        SearchByTag                      = 0x03,
-        SearchByTagResult                = 0x04,
-        SearchByTagResultNone            = 0x05,
-        CreatorList                      = 0x06,
-        AreaList                         = 0x07,
-        AreaListSorted                   = 0x08,
-        PartyList                        = 0x09,
-        SpawnCreature                    = 0x0a,
-        SpawnItem                        = 0x0b,
-        SpawnTrigger                     = 0x0c,
-        SpawnWaypoint                    = 0x0d,
-        SpawnEncounter                   = 0x0e,
-        SpawnPortal                      = 0x0f,
-        SpawnPlaceable                   = 0x10,
-        Difficulty                       = 0x11,
-        ViewInventory                    = 0x12,
-        SpawnTrapOnObject                = 0x13,
-        Login                            = 0x14,
-        Logout                           = 0x15,
-        LoginState                       = 0x16,
-        Heal                             = 0x20,
-        Kill                             = 0x21,
-        Goto                             = 0x22,
-        Possess                          = 0x23,
-        Invulnerable                     = 0x24,
-        Rest                             = 0x25,
-        Limbo                            = 0x26,
-        SearchNext                       = 0x27,
-        SearchById                       = 0x28,
-        Impersonate                      = 0x29,
-        Duplicate                        = 0x2a,
-        ToggleAI                         = 0x2b,
-        ToggleLock                       = 0x2c,
-        DisableTrap                      = 0x2d,
-        TriggerEntered                   = 0x2e,
-        TriggerExit                      = 0x2f,
-        Manifest                         = 0x30,
-        Unmanifest                       = 0x31,
-        Immortal                         = 0x32,
-        GotoPoint                        = 0x50,
-        GiveXP                           = 0x60,
-        GiveLevel                        = 0x61,
-        GiveGold                         = 0x62,
-        SetFaction                       = 0x63,
-        SetFactionByName                 = 0x64,
-        GiveItem                         = 0x80,
-        TakeItem                         = 0x81,
-        GotoPointTarget                  = 0x82,
-        GotoPointAllPlayers              = 0x83,
-        SetStat                          = 0x84,
-        GetVar                           = 0x85,
-        SetVar                           = 0x86,
-        SetTime                          = 0x87,
-        SetDate                          = 0x88,
-        SetFactionReputation             = 0x89,
-        GetFactionReputation             = 0x8A,
-        DumpLocals                       = 0x8B,
-        GiveGoodAlignment                = 0x8C,
-        GiveEvilAlignment                = 0x8D,
-        GiveLawfulAlignment              = 0x8E,
-        GiveChaoticAlignment             = 0x8F,
-    };
-    constexpr int32_t MIN   = 1;
-    constexpr int32_t MAX   = 0x8F;
+      RequestObjectList                = 0x01,
+      ObjectList                       = 0x02,
+      SearchByTag                      = 0x03,
+      SearchByTagResult                = 0x04,
+      SearchByTagResultNone            = 0x05,
+      CreatorList                      = 0x06,
+      AreaList                         = 0x07,
+      AreaListSorted                   = 0x08,
+      PartyList                        = 0x09,
+      SpawnCreature                    = 0x0a,
+      SpawnItem                        = 0x0b,
+      SpawnTrigger                     = 0x0c,
+      SpawnWaypoint                    = 0x0d,
+      SpawnEncounter                   = 0x0e,
+      SpawnPortal                      = 0x0f,
+      SpawnPlaceable                   = 0x10,
+      Difficulty                       = 0x11,
+      ViewInventory                    = 0x12,
+      SpawnTrapOnObject                = 0x13,
+      Login                            = 0x14,
+      Logout                           = 0x15,
+      LoginState                       = 0x16,
+      Heal                             = 0x20,
+      Kill                             = 0x21,
+      Goto                             = 0x22,
+      Possess                          = 0x23,
+      Invulnerable                     = 0x24,
+      Rest                             = 0x25,
+      Limbo                            = 0x26,
+      SearchNext                       = 0x27,
+      SearchById                       = 0x28,
+      Impersonate                      = 0x29,
+      Duplicate                        = 0x2a,
+      ToggleAI                         = 0x2b,
+      ToggleLock                       = 0x2c,
+      DisableTrap                      = 0x2d,
+      TriggerEntered                   = 0x2e,
+      TriggerExit                      = 0x2f,
+      Manifest                         = 0x30,
+      Unmanifest                       = 0x31,
+      Immortal                         = 0x32,
+      GotoPoint                        = 0x50,
+      GiveXP                           = 0x60,
+      GiveLevel                        = 0x61,
+      GiveGold                         = 0x62,
+      SetFaction                       = 0x63,
+      SetFactionByName                 = 0x64,
+      GiveItem                         = 0x80,
+      TakeItem                         = 0x81,
+      GotoPointTarget                  = 0x82,
+      GotoPointAllPlayers              = 0x83,
+      SetStat                          = 0x84,
+      GetVar                           = 0x85,
+      SetVar                           = 0x86,
+      SetTime                          = 0x87,
+      SetDate                          = 0x88,
+      SetFactionReputation             = 0x89,
+      GetFactionReputation             = 0x8A,
+      DumpLocals                       = 0x8B,
+      GiveGoodAlignment                = 0x8C,
+      GiveEvilAlignment                = 0x8D,
+      GiveLawfulAlignment              = 0x8E,
+      GiveChaoticAlignment             = 0x8F,
+  };
+  constexpr int32_t MIN   = 1;
+  constexpr int32_t MAX   = 0x8F;
 
-    constexpr const char* ToString(const unsigned value)
-    {
-        switch (value)
-        {
-            case RequestObjectList:      return "RequestObjectList";
-            case ObjectList:             return "ObjectList";
-            case SearchByTag:            return "SearchByTag";
-            case SearchByTagResult:      return "SearchByTagResult";
-            case SearchByTagResultNone:  return "SearchByTagResultNone";
-            case CreatorList:            return "CreatorList";
-            case AreaList:               return "AreaList";
-            case AreaListSorted:         return "AreaListSorted";
-            case PartyList:              return "PartyList";
-            case SpawnCreature:          return "SpawnCreature";
-            case SpawnItem:              return "SpawnItem";
-            case SpawnTrigger:           return "SpawnTrigger";
-            case SpawnWaypoint:          return "SpawnWaypoint";
-            case SpawnEncounter:         return "SpawnEncounter";
-            case SpawnPortal:            return "SpawnPortal";
-            case SpawnPlaceable:         return "SpawnPlaceable";
-            case Difficulty:             return "Difficulty";
-            case ViewInventory:          return "ViewInventory";
-            case SpawnTrapOnObject:      return "SpawnTrapOnObject";
-            case Login:                  return "Login";
-            case Logout:                 return "Logout";
-            case LoginState:             return "LoginState";
-            case Heal:                   return "Heal";
-            case Kill:                   return "Kill";
-            case Goto:                   return "Goto";
-            case Possess:                return "Possess";
-            case Invulnerable:           return "Invulnerable";
-            case Rest:                   return "Rest";
-            case Limbo:                  return "Limbo";
-            case SearchNext:             return "SearchNext";
-            case SearchById:             return "SearchById";
-            case Impersonate:            return "Impersonate";
-            case Duplicate:              return "Duplicate";
-            case ToggleAI:               return "ToggleAI";
-            case ToggleLock:             return "ToggleLock";
-            case DisableTrap:            return "DisableTrap";
-            case TriggerEntered:         return "TriggerEntered";
-            case TriggerExit:            return "TriggerExit";
-            case Manifest:               return "Manifest";
-            case Unmanifest:             return "Unmanifest";
-            case Immortal:               return "Immortal";
-            case GotoPoint:              return "GotoPoint";
-            case GiveXP:                 return "GiveXP";
-            case GiveLevel:              return "GiveLevel";
-            case GiveGold:               return "GiveGold";
-            case SetFaction:             return "SetFaction";
-            case SetFactionByName:       return "SetFactionByName";
-            case GiveItem:               return "GiveItem";
-            case TakeItem:               return "TakeItem";
-            case GotoPointTarget:        return "GotoPointTarget";
-            case GotoPointAllPlayers:    return "GotoPointAllPlayers";
-            case SetStat:                return "SetStat";
-            case GetVar:                 return "GetVar";
-            case SetVar:                 return "SetVar";
-            case SetTime:                return "SetTime";
-            case SetDate:                return "SetDate";
-            case SetFactionReputation:   return "SetFactionReputation";
-            case GetFactionReputation:   return "GetFactionReputation";
-            case DumpLocals:             return "DumpLocals";
-            case GiveGoodAlignment:      return "GiveGoodAlignment";
-            case GiveEvilAlignment:      return "GiveEvilAlignment";
-            case GiveLawfulAlignment:    return "GiveLawfulAlignment";
-            case GiveChaoticAlignment:   return "GiveChaoticAlignment";
-        }
-        return "(invalid)";
-    }
+  constexpr const char* ToString(const unsigned value)
+  {
+      switch (value)
+      {
+          case RequestObjectList:      return "RequestObjectList";
+          case ObjectList:             return "ObjectList";
+          case SearchByTag:            return "SearchByTag";
+          case SearchByTagResult:      return "SearchByTagResult";
+          case SearchByTagResultNone:  return "SearchByTagResultNone";
+          case CreatorList:            return "CreatorList";
+          case AreaList:               return "AreaList";
+          case AreaListSorted:         return "AreaListSorted";
+          case PartyList:              return "PartyList";
+          case SpawnCreature:          return "SpawnCreature";
+          case SpawnItem:              return "SpawnItem";
+          case SpawnTrigger:           return "SpawnTrigger";
+          case SpawnWaypoint:          return "SpawnWaypoint";
+          case SpawnEncounter:         return "SpawnEncounter";
+          case SpawnPortal:            return "SpawnPortal";
+          case SpawnPlaceable:         return "SpawnPlaceable";
+          case Difficulty:             return "Difficulty";
+          case ViewInventory:          return "ViewInventory";
+          case SpawnTrapOnObject:      return "SpawnTrapOnObject";
+          case Login:                  return "Login";
+          case Logout:                 return "Logout";
+          case LoginState:             return "LoginState";
+          case Heal:                   return "Heal";
+          case Kill:                   return "Kill";
+          case Goto:                   return "Goto";
+          case Possess:                return "Possess";
+          case Invulnerable:           return "Invulnerable";
+          case Rest:                   return "Rest";
+          case Limbo:                  return "Limbo";
+          case SearchNext:             return "SearchNext";
+          case SearchById:             return "SearchById";
+          case Impersonate:            return "Impersonate";
+          case Duplicate:              return "Duplicate";
+          case ToggleAI:               return "ToggleAI";
+          case ToggleLock:             return "ToggleLock";
+          case DisableTrap:            return "DisableTrap";
+          case TriggerEntered:         return "TriggerEntered";
+          case TriggerExit:            return "TriggerExit";
+          case Manifest:               return "Manifest";
+          case Unmanifest:             return "Unmanifest";
+          case Immortal:               return "Immortal";
+          case GotoPoint:              return "GotoPoint";
+          case GiveXP:                 return "GiveXP";
+          case GiveLevel:              return "GiveLevel";
+          case GiveGold:               return "GiveGold";
+          case SetFaction:             return "SetFaction";
+          case SetFactionByName:       return "SetFactionByName";
+          case GiveItem:               return "GiveItem";
+          case TakeItem:               return "TakeItem";
+          case GotoPointTarget:        return "GotoPointTarget";
+          case GotoPointAllPlayers:    return "GotoPointAllPlayers";
+          case SetStat:                return "SetStat";
+          case GetVar:                 return "GetVar";
+          case SetVar:                 return "SetVar";
+          case SetTime:                return "SetTime";
+          case SetDate:                return "SetDate";
+          case SetFactionReputation:   return "SetFactionReputation";
+          case GetFactionReputation:   return "GetFactionReputation";
+          case DumpLocals:             return "DumpLocals";
+          case GiveGoodAlignment:      return "GiveGoodAlignment";
+          case GiveEvilAlignment:      return "GiveEvilAlignment";
+          case GiveLawfulAlignment:    return "GiveLawfulAlignment";
+          case GiveChaoticAlignment:   return "GiveChaoticAlignment";
+      }
+      return "(invalid)";
+  }
 }
+
+namespace NPCMinor
+{
+  enum TYPE
+  {
+
+      ScratchAss = 0x01,
+  };
+};
 
 namespace MessageMapPinMinor
 {

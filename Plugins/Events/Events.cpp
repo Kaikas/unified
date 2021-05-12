@@ -36,6 +36,7 @@
 #include "Events/DebugEvents.hpp"
 #include "Events/StoreEvents.hpp"
 #include "Events/JournalEvents.hpp"
+#include "Events/NPCEvents.hpp"
 
 #include <algorithm>
 #include <regex>
@@ -129,6 +130,7 @@ Events::Events(Services::ProxyServiceList* services)
     m_debugEvents       = std::make_unique<DebugEvents>();
     m_storeEvents       = std::make_unique<StoreEvents>();
     m_journalEvents     = std::make_unique<JournalEvents>();
+    m_npcEvents         = std::make_unique<NPCEvents>();
 }
 
 Events::~Events()

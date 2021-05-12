@@ -1381,6 +1381,12 @@ _______________________________________
     ----------------------|--------|-------
     TARGET                | object | Convert to object with StringToObject() |
 _______________________________________
+    ## NPC Scratching Ass Event
+    - NWNX_ON_NPC_SCRATCHING_ASS_BEFORE
+    - NWNX_ON_NPC_SCRATCHING_ASS_AFTER
+
+    `OBJECT_SELF` = The npc scratching its ass
+_______________________________________
 */
 /*
 const int NWNX_EVENTS_OBJECT_TYPE_CREATURE          = 5;
